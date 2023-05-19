@@ -6,7 +6,7 @@ To use this template you must have installed **kustomize**.
 
 This architecture is based on install infrastrcture of your system, all in one repository (monorepoo) or with posibility of divide in some enviroments in each repository (multirepo). **The idea is one scalable architecture**.
 
-![Architecture to deploy k8s infrastructure.](https://drive.google.com/uc?export=download&id=1uf4sIRt4BB1h87nqcYf07W6ae5XMdmgt)
+![Architecture to deploy k8s infrastructure.](https://drive.google.com/uc?export=download&id=1ZKcZnYBRgZLQptLF6ygxjIASTpdYBtmX)
 
 The architecture is simple, in the folder "infrastructure" must put all your objects' kubernetes like deployment, deamonset, or statefulset of your system that you want replicate in each enviroment that you want to deploy (also of them service objects).
 

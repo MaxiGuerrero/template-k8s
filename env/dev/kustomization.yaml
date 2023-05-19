@@ -1,0 +1,11 @@
+resources:
+  - namespace.yaml
+  - ../../infrastructure
+  - config
+  - secret
+
+namespace: default
+images:
+  - name: $IMAGE_URL
+    newName: $NEW_IMAGE_URL
+    newTag: $NEW_IMAGE_TAG

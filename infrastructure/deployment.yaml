@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: $NAME_APP-deployment
+  labels:
+    app: $NAME_APP
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: $NAME_APP
+  template:
+    metadata:
+      labels:
+        app: $NAME_APP
+    spec:
+      containers:
+        - name: $NAME_APP
+          image: $IMAGE_URL ## Set image
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          # resources: ## Define limits of resources
+          #   requests:
+          #     memory: 256M
+          #   limits:
+          #     memory: 512M
+          # envFrom:
+          #   - configMapRef:
+          #       name: configmap
+          #   - secretRef:
+          #       name: $NAME_APP-env
+      imagePullSecrets:
+        - name: repo-pull-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: $NAME_APP-service #DNS of the service
+spec:
+  selector:
+    app: $NAME_APP
+  ports:
+    - protocol: TCP
+      port: 8080 #Port of the service
+      targetPort: 8080 #Port of the app target
